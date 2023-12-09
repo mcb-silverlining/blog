@@ -1,0 +1,23 @@
+ hugo new site hugo_quickstart
+ cd hugo_quickstart/
+ git init
+ git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
+ echo "theme = 'ananke'" >> hugo.toml
+ hugo server
+#double checked http://localhost:1313
+
+#added content
+ hugo new content posts/my-first-post.md
+ cd content/posts/
+ cp ~/hugo_orig/blogs/content/posts/my* .
+#checked again
+ hugo server
+
+ git status
+ git add .
+ git commit -m "starting"
+ git branch
+ git show-branch
+ git branch -m master main
+ git remote set-url origin git@github.com:mcb-silverlining/blog
+ git push --set-upstream origin main
