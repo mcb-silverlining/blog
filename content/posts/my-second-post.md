@@ -5,10 +5,11 @@ draft = false
 +++
 ## Introduction
 
-This is **post**, is about how to install CESM2 to *AWS*!
+This blog post is in work.
+
+How to install CESM2 to *AWS*!
 
 
-more words ... and more
 
 
 For more information about SilverLining, visit the [SilverLining](https://silverlining.ngo) website!

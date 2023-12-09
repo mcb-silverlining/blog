@@ -5,10 +5,10 @@ draft = false
 +++
 ## Introduction
 
-This is **post**, is about how to install E3SM to *AWS*!
+This blog post is in work.
 
+How to Install E3SM to *AWS*!
 
-more words ... and more words
 
 
 For more information about SilverLining, visit the [SilverLining](https://silverlining.ngo) website!

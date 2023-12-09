@@ -1,14 +1,15 @@
 +++
-title = 'AWS ParallelCluster in production'
+title = 'AWS ParallelCluster in Production'
 date = 2023-11-29T17:44:28-08:00
 draft = false
 +++
 ## Introduction
 
-This is **post**, is about how to introduce product cluster features to parallelcluster on *AWS*!
+This is still in work.
+
+This blog introduces parallelcluster product features!
 
 
-more words ...
 
 
 For more information about SilverLining, visit the [SilverLining](https://silverlining.ngo) website!
