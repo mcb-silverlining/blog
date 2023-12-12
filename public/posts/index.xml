@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on My New Hugo Site</title>
-    <link>https://example.org/posts/</link>
-    <description>Recent content in Posts on My New Hugo Site</description>
+    <title>Posts on  Posts to run Earth Science Models in the Cloud! Brought to you by SilverLining NGO, Stay tuned! This site is in actively work.</title>
+    <link>https://blogs.silverliningresearch.org/posts/</link>
+    <description>Recent content in Posts on  Posts to run Earth Science Models in the Cloud! Brought to you by SilverLining NGO, Stay tuned! This site is in actively work.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 29 Nov 2023 17:44:28 -0800</lastBuildDate>
-    <atom:link href="https://example.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blogs.silverliningresearch.org/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>AWS ParallelCluster in production</title>
-      <link>https://example.org/posts/my-third-post/</link>
+      <title>AWS ParallelCluster in Production</title>
+      <link>https://blogs.silverliningresearch.org/posts/my-third-post/</link>
       <pubDate>Wed, 29 Nov 2023 17:44:28 -0800</pubDate>
-      <guid>https://example.org/posts/my-third-post/</guid>
-      <description>Introduction This is post, is about how to introduce product cluster features to parallelcluster on AWS!
-more words &amp;hellip;
+      <guid>https://blogs.silverliningresearch.org/posts/my-third-post/</guid>
+      <description>Introduction This is still in work.
+This blog introduces parallelcluster product features!
 For more information about SilverLining, visit the SilverLining website!</description>
     </item>
     <item>
       <title>Installing CESM2 to AWS</title>
-      <link>https://example.org/posts/my-second-post/</link>
+      <link>https://blogs.silverliningresearch.org/posts/my-second-post/</link>
       <pubDate>Wed, 29 Nov 2023 17:44:22 -0800</pubDate>
-      <guid>https://example.org/posts/my-second-post/</guid>
-      <description>Introduction This is post, is about how to install CESM2 to AWS!
-more words &amp;hellip;
+      <guid>https://blogs.silverliningresearch.org/posts/my-second-post/</guid>
+      <description>Introduction This blog post is in work.
+How to install CESM2 to AWS!
 For more information about SilverLining, visit the SilverLining website!</description>
     </item>
     <item>
       <title>Installing E3SM on AWS</title>
-      <link>https://example.org/posts/my-first-post/</link>
+      <link>https://blogs.silverliningresearch.org/posts/my-first-post/</link>
       <pubDate>Wed, 29 Nov 2023 17:38:46 -0800</pubDate>
-      <guid>https://example.org/posts/my-first-post/</guid>
-      <description>Introduction This is post, is about how to install E3SM to AWS!
-more words &amp;hellip;
+      <guid>https://blogs.silverliningresearch.org/posts/my-first-post/</guid>
+      <description>Introduction This blog post is in work.
+How to Install E3SM to AWS!
 For more information about SilverLining, visit the SilverLining website!</description>
     </item>
   </channel>

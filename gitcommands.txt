@@ -1,0 +1,4 @@
+#from ~/hugo-quickstart
+git add .
+git commit -m "cleaned up"
+git push --set-upstream origin main
