@@ -1,10 +1,12 @@
 baseURL = 'https://blogs.silverliningresearch.org/'
 languageCode = 'en-us'
-title = ' Posts to run Earth Science Models in the Cloud! Brought to you by SilverLining NGO, Stay tuned! This site is in actively work.'
+title = ' How to run Earth Science Models in the Cloud! stay tuned! This site is in actively work.'
 theme = 'ananke'
 
 [params]
+  subtitle = 'Brought to you by SilverLining NGO'
   text_color = "" 
+  email = 'lhedges@silverlining.ngo'
   author = ""
   favicon = ""
   site_logo = ""
