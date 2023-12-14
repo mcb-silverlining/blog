@@ -9,6 +9,8 @@ This blog post is in work.
 
 How to Install E3SM to *AWS*!
 
+$$ a = b^2 $$
+
 
 
 For more information about SilverLining, visit the [SilverLining](https://silverlining.ngo) website!
