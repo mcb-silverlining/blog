@@ -4,8 +4,8 @@ title = ' How to run Earth Science Models in the Cloud! stay tuned! This site is
 theme = 'ananke'
 
 [params]
-  subtitle = 'blah'
-  text_color = "" 
+  subtitle = 'blahsubtitleblah'
+  text_color = "dark-grey" 
   favicon = ""
   site_logo = ""
   description = "The last theme you'll ever need. Maybe."
