@@ -10,10 +10,17 @@ This blog post is in work.
 
 How to Install E3SM to *AWS*!
 
-![Scenario 1: Across columns](/goldpond.jpg)
+![Scenario 1: Across columns](/images/goldpond.jpg)
+This is Gold Pond at Snoqualmie Pass!
+
+$$y_t = \beta_0 + \beta_1 x_t + \epsilon_t$$
 
 
+Next attempt on image:
+This doesn't work ... not sure what Scenario 1, etc., is
+(/images/goldpond.jpg)
+This is Gold Pond at Snoqualmie Pass!
 
-first try
+
 
 For more information about SilverLining, visit the [SilverLining](https://silverlining.ngo) website!
