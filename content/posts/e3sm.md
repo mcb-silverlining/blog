@@ -13,13 +13,9 @@ How to Install E3SM to *AWS*!
 ![Scenario 1: Across columns](/images/goldpond.jpg)
 This is Gold Pond at Snoqualmie Pass!
 
+Demonstrating that Katex (latex) works here:
 $$y_t = \beta_0 + \beta_1 x_t + \epsilon_t$$
 
-
-Next attempt on image:
-This doesn't work ... not sure what Scenario 1, etc., is
-(/images/goldpond.jpg)
-This is Gold Pond at Snoqualmie Pass!
 
 
 
