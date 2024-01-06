@@ -12,36 +12,33 @@ Supercomputers around the world are dedicated to the computational prediction an
 This blog describes how to install and run CESM2 on AWS using an AWS service called AWS Parallelcluster. 
 
 ## What is AWS ParallelCluster? 
-AWS ParallelCluster is a python script that is installed and run by a system administrator to create a compute cluster in an AWS account. CESM2 is then installed on that cluster and that compute cluster is then made available to users of CESM2. A queuing system is set up with a head node, storage systems, and "on demand" compute nodes. Often the system administrator is simply the user in need of compute time. ;-) 
+AWS ParallelCluster is a python script that is installed and run by a system administrator to create a compute cluster in an AWS account. CESM2 is then installed on that cluster and that compute cluster is made available to users of CESM2. A queuing system is set up with a head node, storage systems, and "on demand" compute nodes. Often the system administrator is simply the user in need of compute time. ;-) 
 
-It is important to distinguish that AWS ParallelCluster is not the cluster but a tool that creates one or many clusters in the designated AWS account based on a yaml configuration file. The yaml configuration file defines compute nodes, queue names, headnode size, and shared storage for the cluster.  AWS ParallelCluster can be installed to a laptop outside of AWS, or in an AWS account using AWS cloudshell, AWS Cloud9, or an EC2 instance. AWS ParallelCluster can also be run from the very nice ParallelCluster UI (refrence). Unfortunately, as of this writing, the UI does not directly support the version of AWS FSx Lustre used in the recommended yaml file below. 
+It is important to distinguish that AWS ParallelCluster is not the cluster but a tool that creates one or many clusters in the designated AWS account based on a yaml configuration file. The yaml configuration file defines compute nodes, queue names, headnode size, and shared storage for the cluster.  AWS ParallelCluster can be installed to a laptop outside of AWS, or in an AWS account using AWS cloudshell, AWS Cloud9, or an EC2 instance. AWS ParallelCluster can also be run from the very nice ParallelCluster UI (refrence). Unfortunately, as of this writing, the UI does not directly support the version of AWS FSx Lustre used in the recommended yaml file below. The appendix shows a work-around that allows the ParallelCluster UI to be used with this blog.
 
 ## Before Getting Started
-This blog describes the creation of a cluster, installation of CESM2, followed by brief noes on how to run CESM2. This is not a tutorial for running CESM2 nor does it describe how or where to install AWS ParallelCluster. As a prerequisite to this blog, an AWS account, introductory knowledge of AWS ParallelCluster and an existing installation of AWS ParallelCluster is assumed. The background for both can be found here (references,https://www.hpcworkshops.com/08-efa.html). Knowledge of CESM2 is also assumed and while a small demonstration case is included, the details and complexity of running CESM2 requires specific climate science expertise, (references). 
+This blog describes the creation of a cluster, installation of CESM2, followed by brief noes on how to run CESM2. This is not a tutorial for running CESM2 nor does it describe how or where to install AWS ParallelCluster. As a prerequisite to this blog, an AWS account, introductory knowledge of AWS ParallelCluster and an existing installation of AWS ParallelCluster is assumed. The background for that can be found here (references,https://www.hpcworkshops.com/08-efa.html). Knowledge of CESM2 is also assumed and while a small demonstration case is included, the details and complexity of running CESM2 requires specific climate science expertise (references). 
 
-The machine files included here allow CESM2 to run on the AWS HPC6a instance type. The HPC6a instance type is designed specifically for HPC calculations. 
+The machine files discussed below allow CESM2 to run on the AWS HPC6a instance type. The HPC6a instance type is designed specifically for HPC calculations and is described here https://aws.amazon.com/ec2/instance-types/hpc6/. AWS accounts have service limits to prevent accidental usage (and accidental charges) for features an account owner might not want. As such, new accounts must request an increase to the number of accessible HPC instances.
 
+Double check AWS limits on the AWS Service quota panel from the AWS console. The hpc6a limit is found as part of the “Running On-Demand HPC instances” quota name from the Amazon Elastic Cloud Compute dashboard card. Request a limit increase if necessary before proceeding.
 
-* Knowledge of AWS ParallelCluster with ParallelCluster installed and available to deploy a cluster based on the supplied yaml configuraiton file. The background for both can be found here references,https://www.hpcworkshops.com/08-efa.html). 
-* Knowledge of CESM is also assumed though a small demonstration case is included. 
-* An AWS SSH key is required to launch the cluster and can be created from the Amazon EC2 dashboard if one is not already available. 
-* The procedure described here uses the AWS HPC6a instance type (https://aws.amazon.com/ec2/instance-types/hpc6/). The HPC6a instance type is designed specifically for HPC calculations. Double check AWS limits on the AWS Service quota panel from the AWS console. The hpc6a limit is found as part of the “Running On-Demand HPC instances” quota name from the Amazon Elastic Cloud Compute dashboard card. Request a limit increase if necessary before proceeding.
+An AWS SSH key is required to launch the cluster and can be created from the Amazon EC2 dashboard if one is not already available. Be sure to secure the private portion of the key as Amazon does not retain this and it can only be downloaded once.
 
-## Anticipated Costs
 ## Cost to Work Through this Blog
-The cost to work through this blog is expected to be less than $15. The cost of full-fledged runs can be estimated through the aws cost calculator by timing a short duration version of the desired run. 
+The cost to work through this blog is expected to be less than $15. The cost of full-fledged runs can be estimated with the aws cost calculator by timing a short duration version of the desired run. Reference calculator.aws
 
 ## Creating the Cluster 
-The steps below walk the user through launching a cluster, installing required libraries, fetching the CESM, and launching a case. 
+The steps below walk the user through launching a cluster, installing required libraries, fetching CESM2, and launching a case. 
 
 ### Step 1: Create a cluster with the following yaml config file 
-Copy the following parallel cluster yaml config file to where AWS ParallelCluster is installed. Make the following edits:
-* replace the subnet placeholder with a subnet where HPC6a is available, us-east-2, AZ2 is often used. The subnet name that corresponds to us-east-2, AZ2 can be found in the VPC section of the AWS console. The subnet needs to be updated in two spots within the configuration file.
-* Substitute the name of your ssh key 
-* Double check that the max number of compute nodes requested are within your account limits. The cluster will fail if the hpc6a account limits are exceeded.
+The large black box immediately below contains the yaml configuration file needed to launch a cluster to your AWS account from your ParallelCluster installation. Copy and paste the yaml config file to where AWS ParallelCluster is installed. 
 
-Two shared volumes are designated to be attached to the cluster. The first is an Amazon EBS volume (general purpose SSD-based) which is attached at /opt/ncar and allows compute node access CESM and the libraries. The second an Amazon FSx for Lustre volume offers /scratch space on a shared 6TB PERSISTENT 1 HDD. The HDD volume is performant enough for CESM runs while offering an excellent price point. CESM users often require large amounts of scratch space and the Amazon FSx for Lustre volume can be increased from the console in increments of 6TB. 
+#### Make the following edits:
+* Replace the subnet placeholder, subnet-XXXXX, with a subnet where HPC6a is available, us-east-2, AZ2 is commonly used. The subnet name that corresponds to us-east-2, AZ2 can be found in the VPC section of the AWS console. The subnet needs to be updated in two spots within the configuration file.
+* Substitute the name of your ssh key in the place of "addkeynamehere". The ssh key used needs to be in the same region as the subnet. In the yaml configuration file below, this is us-east-2.
 
+#### AWS ParallelCluster YAML Configuration 
 ```bash
 Region: us-east-2
 Image:
@@ -110,7 +107,13 @@ SharedStorage:
       DeletionPolicy: Delete
 ```
 
-To complete this step, launch the modified yaml config file with ParallelCluster and wait for the cluster creation to complete, approximately 15 minutes.
+Double check that the max number of compute nodes requested in the yaml config file (MaxCount) are within your AWS account limits. The cluster will fail if the hpc6a account limits are exceeded.
+
+Two shared volumes are designated to be attached to the cluster. The first is an Amazon EBS volume (general purpose SSD-based) which is attached at /opt/ncar and allows compute node access to CESM2 and the libraries. The second an Amazon FSx for Lustre volume offers /scratch space on a shared 6TB PERSISTENT 1 HDD. The HDD volume is performant enough for CESM2 runs while offering an excellent price point. CESM2 users often require large amounts of scratch space and the Amazon FSx for Lustre volume can be increased from the console in increments of 6TB. 
+
+To complete this step, launch the modified yaml config file with ParallelCluster and wait for the cluster creation to complete. This will take approximately 15 minutes.
+
+AWS charges begin at this time and continue until the cluster is deleted as described below. 
 
 ```bash
 $ pcluster create-cluster —cluster-configuration cesm.yaml —cluster-name cesm —region us-east-2
