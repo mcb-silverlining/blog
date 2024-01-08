@@ -28,6 +28,15 @@ du -d 1 -h
 
 
 
+-how to save costs and not accidently overrun an account
+-how to run the cluster in a multiuser environment
+-best practices for security
+-dealing with storage
+-running on other clouds?
+
+
+
+
 
 For more information about SilverLining, visit the [SilverLining](https://silverlining.ngo) website!
 
