@@ -26,7 +26,7 @@ ls -ltr
 du -d 1 -h
 {{< / highlight >}}
 
-
+### Other blog post ideas
 
 * how to save costs and not accidently overrun a budget 
 * how to run the cluster in a multiuser environment
