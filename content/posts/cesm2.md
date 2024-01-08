@@ -1,6 +1,6 @@
 +++
-title = 'Installing and Running CESM2 in the cloud with AWS'
-date = 2023-11-29T17:44:22-08:00
+title = 'How to Instal and Run CESM2 in the cloud with AWS'
+date = 2024-01-05T17:44:22-08:00
 draft = false
 +++
 
