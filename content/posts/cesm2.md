@@ -1,5 +1,5 @@
 +++
-title = 'How to Instal and Run CESM2 in the cloud with AWS'
+title = 'How to Install and Run CESM2 in the cloud with AWS'
 date = 2024-01-05T17:44:22-08:00
 draft = false
 +++
