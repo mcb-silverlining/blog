@@ -33,6 +33,7 @@ du -d 1 -h
 -best practices for security
 -dealing with storage
 -running on other clouds?
+-wrf
 
 
 
