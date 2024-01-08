@@ -28,12 +28,12 @@ du -d 1 -h
 
 
 
--how to save costs and not accidently overrun an account
--how to run the cluster in a multiuser environment
--best practices for security
--dealing with storage
--running on other clouds?
--wrf
+* how to save costs and not accidently overrun a budget 
+* how to run the cluster in a multiuser environment
+* best practices for security
+* dealing with storage issues
+* running on other clouds?
+* how to run wrf
 
 
 
