@@ -17,7 +17,7 @@ Demonstrating that Katex (latex) works here:
 $$y_t = \beta_0 + \beta_1 x_t + \epsilon_t$$
 
 
-{{< figure src="/images/goldpond.jpg" title="This is Gold Pond at Snoqualmie Pass!" >}}
+{{< figure src="/images/goldpond.jpg" title="This is Gold Creek Pond at Snoqualmie Pass!" >}}
 
 This is an example of code:
 {{< highlight go >}}
