@@ -375,7 +375,6 @@ When ready, the cluster is deleted. **Charges continue until the cluster is dele
 
 Delete and remove the cluster from the ParallelCluster cli or UI with the following command:
 ````bash
-check that these are double dashses (and also throught this gist)
 $pcluster delete-cluster --cluster-name cesm --region us-east-2
 ````
 
