@@ -1,5 +1,5 @@
 +++
-title = 'Installing and Running E3SM on AWS'
+title = 'How to install and run E3SM on AWS'
 date = 2024-01-01T12:00:00-00:00
 draft = false
 math = true
@@ -9,20 +9,32 @@ math = true
 
 # ***This blog post is in work.***
 
-# ***This blog post is in work.***
+Supercomputers around the world are dedicated to the computational prediction and analysis of climate scenarios. These supercomputers run state-of-the-art models such as the DOE's E3SM, [Energy Exascale Earth System Model](https://e3sm.org/)). While, E3SM is available to researchers around the world, the compute time required to run it is not always easy to find. This limits the ability of these scientists to contribute to the research needed to mitigate the effects of climate change. This blog describes how to install and run E3SM on AWS using an AWS service called AWS ParallelCluster.
 
-How to Install and Run E3SM on AWS!
+## What is AWS ParallelCluster? 
+AWS ParallelCluster is an open source cluster management tool installed and run by a system administrator to create a compute cluster in an AWS account. Libraries such as NETCDF and HDF5 are installed on the cluster, E3SM is brought over from github and made available to E3SM users. The cluster environment setup includes a headnode, a SLURM queuing system, storage systems, and "on demand" compute nodes. Often the system administrator is simply the user in need of extra computational resources. :wink:
 
-## Introduction
+It is important to distinguish that AWS ParallelCluster is not the cluster but a tool that creates one or many clusters in the designated AWS account based on a yaml configuration file. The yaml configuration file defines the compute nodes to be used, queue names, headnode size, and shared storage for the cluster. AWS ParallelCluster can be installed to a laptop outside of AWS, in an AWS account using AWS cloudshell, AWS Cloud9, or on a separate EC2 instance. AWS ParallelCluster can also be run from the very nice [ParallelCluster UI](https://blogs.silverliningresearch.org/posts/demo/). Unfortunately, as of this writing, the UI does not directly support the version of AWS FSx Lustre used in the recommended yaml file below. The appendix shows a work-around that allows the ParallelCluster UI to be used with this blog.
 
-Installing and running the climate code E3SM on AWS
+## Before Getting Started
+This blog describes the creation of a cluster, installation of CESM2, followed by brief noes on how to run CESM2. This is not a tutorial for running CESM2 nor does it describe how or where to install AWS ParallelCluster. As a prerequisite to this blog, an AWS account, introductory knowledge of AWS ParallelCluster and an existing installation of AWS ParallelCluster is assumed. The background for that can be found [here](https://www.hpcworkshops.com/08-efa.html). Knowledge of CESM2 is also assumed and while a small demonstration case is included, the details and complexity of running CESM2 requires specific climate science expertise.
 
-Supercomputers around the world are dedicated to the computational prediction and analysis of climate scenarios. These supercomputers run state-of-the-art models such as the DOE's E3SM, Energy Exascale Earth System Model. (Reference: [https://e3sm.org/](https://e3sm.org/)) While E3SM is available to researchers around the world, compute time on the supercomputers the codes are designed to run on, is not so easily obtained. This limits the ability of these scientists to contribute to the research needed to mitigate the effects of climate change.
+The machine files discussed below allow CESM2 to run on the AWS HPC6a instance type. The HPC6a instance type is designed specifically for HPC calculations and is described [here](https://aws.amazon.com/ec2/instance-types/hpc6/). AWS accounts have service limits to prevent accidental usage (and accidental charges) for features an account owner might not want. As such, new accounts must request an increase to the number of accessible HPC instances.
 
-Climate codes such as E3SM, CESM, and WRF are extremely compute intensive and can be complicated to install on a computing platform. AWS ParallelCluster makes setting up and running these codes easier. This blog describes how to install and run E3SM on AWS starting from AWS Parallelcluster. 
+Double check AWS limits on the AWS Service Quota panel from the AWS console. The hpc6a limit is found as part of the "Ec2,Running On-Demand HPC instances” quota name from the Amazon Elastic Cloud Compute dashboard card. The value quoted are "vcpus", divide by 96 to equal the number of HPC6a instances available. Request a limit increase if necessary before proceeding.
+
+An AWS SSH key is required to launch the cluster and can be created from the Amazon EC2 dashboard if one is not already available. Be sure to secure the private portion of the key as Amazon does not retain this and it can only be downloaded once.
+
+## Cost to Work Through this Blog
+The cost to work through this blog is expected to be less than $15. The cost of full-fledged runs can be estimated with the [aws cost calculator](calculator.aws) by timing a short duration version of the desired run.
+
+## Creating the Cluster 
+The steps below walk the user through launching a cluster, installing required libraries, fetching CESM2, and launching a case.
 
 
-### Prerequisites & anticipated costs
+
+
+
 
 This blog describes the installation and running of E3SM. As a prerequisite, an AWS account and knowledge of AWS ParallelCluster is assumed. The background for both can be found here (references,https://www.hpcworkshops.com/08-efa.html). Knowledge of E3SM is also assumed and while a small demonstration case is included, the details and complexity of running E3SM requires specific climate science expertise, references. The blog begins after the installation of AWS ParallelCluster.
 

@@ -4,10 +4,6 @@ date = 2024-01-05T17:44:22-08:00
 draft = false
 +++
 
-# DRAFT
-# This blog post is in work.
-# DRAFT
-
 Supercomputers around the world are dedicated to the computational prediction and analysis of climate scenarios. These supercomputers run state-of-the-art models such as NCAR’s [Community Earth System Model](https://www.cesm.ucar.edu/). While, CESM2 is available to researchers around the world, the compute time required to run it is not always easy to find. Cloud computing offers an alternative. 
 This blog describes how to install and run CESM2 on AWS using an AWS service called AWS Parallelcluster. 
 
@@ -407,7 +403,7 @@ AWS offers a free tier download of 100 GB of data from within AWS to a remote co
 The scratch drive offers plenty of room for running cases and can be made larger from the AWS console as needed. The root volume underlying the headnode can also be made larger though this space is more expensive than the /scratch volume when using FSx lustre HDD for the /scratch volume. It is noted that user /home locations are located on the root volume and if this volume accidentally fills up, one can no longer log onto the instance. It is possible to recover from this error but requires unmounting, modifying the volume, and remounting (reference). Users need to be encouraged to avoid filling up the /home volume. A follow on blog will describe how to avoid this problem.
 
 ## Conclusion and Acknowledgements
-The methods described in this blog were originally put together by Brian Dobbins at NCAR. Phil Raush refined these methods. Additional thanks goes to NCAR, NSF, and the DoE for supporting this work. SilverLining, a nonprofit organization, provides AWS support to climate researchers and contributed to this blog. SilverLining encourages and supports the use of climate codes in the cloud (the computing kind).
+The methods described in this blog were originally put together by Brian Dobbins at NCAR. Phil Rasch refined these methods. Additional thanks goes to NCAR, NSF, and the DoE for supporting this work. SilverLining, a nonprofit organization, provides AWS support to climate researchers and contributed to this blog. SilverLining encourages and supports the use of climate codes in the cloud (the computing kind).
 
 
 ## References
